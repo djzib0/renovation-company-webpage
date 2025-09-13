@@ -4,7 +4,7 @@ import * as React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-function ActiveLink({ href, label }: { href: string; label: string }) {
+const ActiveLink = ({ href, label }: { href: string; label: string }) => {
   const pathname = usePathname() || '/'
   const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
   return (

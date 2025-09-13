@@ -1,0 +1,16 @@
+{
+    "folder-color.pathColors": [
+        {
+            "folderPath": "renovation-company-webpage\\app\\components\\",
+            "color": "foldercolorizer.color_00ff33"
+        },
+        {
+            "folderPath": "renovation-company-webpage\\app\\utils\\",
+            "color": "foldercolorizer.color_ffcc00"
+        },
+        {
+            "folderPath": "renovation-company-webpage\\app\\(root)\\about\\",
+            "color": "foldercolorizer.color_ff00ff"
+        }
+    ]
+}

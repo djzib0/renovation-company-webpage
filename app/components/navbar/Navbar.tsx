@@ -15,7 +15,7 @@ const NAV_LINKS = [
 
 type NavbarProps = { topOffset?: number }
 
-export function Navbar({ topOffset = 0 }: NavbarProps) {
+const Navbar = ({ topOffset = 0 }: NavbarProps) => {
   const [open, setOpen] = React.useState(false)
 
   // Close on route change (best-effort)
@@ -105,3 +105,5 @@ export function Navbar({ topOffset = 0 }: NavbarProps) {
     </header>
   )
 }
+
+export default Navbar

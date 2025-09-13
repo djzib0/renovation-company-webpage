@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-function TopInfoBar({ onHeightChange }: { onHeightChange?: (h: number) => void }) {
+const TopInfoBar = ({ onHeightChange }: { onHeightChange?: (h: number) => void }) => {
   const ref = React.useRef<HTMLDivElement | null>(null)
   const [hidden, setHidden] = React.useState(false)
   const lastY = React.useRef(0)
