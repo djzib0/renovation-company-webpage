@@ -11,16 +11,16 @@ const ActiveLink = ({ href, label }: { href: string; label: string }) => {
     <Link
       href={href}
       className={[
-        'relative inline-flex items-center px-2 py-1 text-sm font-medium transition-colors',
+        'relative inline-flex items-center px-2 py-1 text-lg font-medium transition-colors',
         isActive
-          ? 'text-gray-900 dark:text-white'
-          : 'text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white',
+          ? 'text-orange-500 dark:text-white'
+          : 'text-gray-700 hover:text-orange-500 dark:text-gray-300 dark:hover:text-white',
       ].join(' ')}
     >
       <span>{label}</span>
-      {isActive && (
-        <span className="absolute -bottom-1 left-1/2 h-[2px] w-6 -translate-x-1/2 rounded-full bg-gray-900 dark:bg-white" />
-      )}
+       {isActive && (
+          <span className="absolute -bottom-1 left-0 h-[2px] w-full rounded-full bg-orange-500 dark:bg-white" />
+        )}
     </Link>
   )
 }

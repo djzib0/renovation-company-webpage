@@ -5,11 +5,10 @@ import Link from 'next/link'
 import ActiveLink from './ActiveLink'
 
 const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', label: 'HOME' },
+  { href: '/projects', label: 'PROJEKTY' },
+  { href: '/about', label: 'O FIRMIE' },
+  { href: '/contact', label: 'KONTAKT' },
 ]
 
 

@@ -18,15 +18,9 @@ const texts = [
 const INTERVAL_MS = 5000 // time each image stays visible
 const FADE_MS = 900 // crossfade duration
 
-const intervalMs = 5000
-const fadeMs = 900
-
-
-
 const HeroSection = () => {
 
   const [current, setCurrent] = useState(0);
-  const [fading, setFading] = useState(false);
 
   useEffect(() => {
     if (images.length <= 1) return
@@ -35,26 +29,10 @@ const HeroSection = () => {
     }, INTERVAL_MS)
     return () => clearInterval(id)
   }, []);
-
-  // useEffect(() => {
-  //   if (texts.length <= 1) return
-  //   const id = setInterval(() => {
-  //     // 1) fade out
-  //     setFading(true)
-  //     // 2) after fade out, swap text and fade in
-  //     const to = setTimeout(() => {
-  //       setCurrent((i) => (i + 1) % texts.length)
-  //       setFading(false)
-  //     }, fadeMs)
-  //     return () => clearTimeout(to)
-  //   }, intervalMs)
-  //   return () => clearInterval(id)
-  // }, [])
-
   
   return (
     <section
-      className="relative isolate w-full min-h-[50vh] overflow-hidden bg-black text-white py-20"
+      className="relative isolate w-full min-h-[40vh] overflow-hidden bg-black text-white py-20"
       aria-label="Renovation company hero"
       style={{fontFamily: "var(--font-roboto)", contain: "paint"}}
     >
@@ -86,7 +64,7 @@ const HeroSection = () => {
       {/* Centered content panel */}
       <div 
         className="hidden absolute bottom-10 left-10 sm:flex flex-col md:w-[600px] max-w-xl"
-        style={{ opacity: fading ? 0 : 1, transitionDuration: `${fadeMs}ms` }}
+        style={{ opacity: 1, transitionDuration: `${FADE_MS}ms` }}
       >
         <div className="w-full bg-black/70 p-6 border-b-[1px] border-b-white/30 shadow-2xl backdrop-blur-xs sm:p-8">
           <h1 className="text-3xl leading-tight tracking-tight text-white drop-shadow sm:text-5xl">
