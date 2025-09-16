@@ -35,8 +35,8 @@ const TopInfoBar = ({ onHeightChange }: { onHeightChange?: (h: number) => void }
     <div
       ref={ref}
       className={[
-        'fixed inset-x-0 top-0 z-50 h-12 flex items-center justify-end gap-6 px-4 py-2 text-sm',
-        'bg-neutral-100 text-neutral-500 ring-1 ring-amber-200/60 backdrop-blur',
+        'fixed inset-x-0 top-0 z-50 h-12 flex items-center justify-end gap-6 px-4 py-2 text-base',
+        'bg-[#EEEEEE] text-[#2A4759] ring-1 ring-amber-200/60 backdrop-blur',
         'transition-transform duration-200 will-change-transform',
         hidden ? '-translate-y-full' : 'translate-y-0',
       ].join(' ')}

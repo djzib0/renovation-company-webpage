@@ -22,33 +22,6 @@ export type RevealSectionProps = {
   altBg?: boolean
 }
 
-// IntersectionObserver based in-view hook (fires once)
-const useInViewOnce = (threshold = 0.2) => {
-  const ref = useRef<HTMLDivElement | null>(null)
-  const [inView, setInView] = useState(false)
-
-  useEffect(() => {
-    if (!ref.current || inView) return
-    const el = ref.current
-
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setInView(true)
-            obs.disconnect()
-          }
-        })
-      },
-      { threshold }
-    )
-
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [inView, threshold])
-
-  return { ref, inView }
-}
 
 
 export const RevealSection: React.FC<RevealSectionProps> = ({
@@ -61,7 +34,7 @@ export const RevealSection: React.FC<RevealSectionProps> = ({
   className = "",
   altBg = false,
 }) => {
-  const { ref, inView } = useInViewOnce(0.2)
+  
 
 
   // Layout ordering: on mobile it's stacked with image first; on md+ follow mediaSide
@@ -70,8 +43,7 @@ export const RevealSection: React.FC<RevealSectionProps> = ({
 
   return (
     <section
-      ref={ref}
-      className={`w-full ${altBg ? "bg-orange-300 dark:bg-neutral-900" : "bg-transparent"} ${className}`}
+      className={`w-full ${altBg ? "bg-[#c7e8ff]" : "bg-transparent"} ${className}`}
     >
       <div
         className={[
@@ -80,7 +52,7 @@ export const RevealSection: React.FC<RevealSectionProps> = ({
       >
         {/* Image */}
         <div className={[`order-1 ${imageOrderMd}`].join(" ")}> 
-          <div className="relative aspect-[4/3] w-full overflow-hidden shadow-xl ring-1 ring-black/5 dark:ring-white/10">
+          <div className="relative aspect-[4/3] w-full overflow-hidden shadow-xl ring-1 ring-black/5">
             <Image
               src={imageSrc}
               alt={imageAlt}
@@ -98,14 +70,14 @@ export const RevealSection: React.FC<RevealSectionProps> = ({
             `order-2 opacity-100 ${textOrderMd}`,
           ].join(" ")}
         >
-          <h2 className="text-2xl uppercase font-semibold tracking-tight text-slate-700 dark:text-white sm:text-3xl">
+          <h2 className="text-2xl uppercase font-semibold tracking-tight text-slate-700 sm:text-3xl">
             {title}
           </h2>
           {/* underline */}
-          <div className={`mt-3 h-[3px] w-16 rounded-full bg-orange-500 dark:bg-white/80 ${altBg ? "bg-white dark:bg-neutral-900" : "bg-orange-500 dark:bg-white/80"}`}/>
+          <div className={`mt-2 h-[5px] w-32 rounded-full  ${altBg ? "bg-[#FF894F]" : "bg-sky-500"}`}/>
 
           {body && (
-            <div className="prose prose-slate mt-4 max-w-none text-slate-700 dark:prose-invert dark:text-neutral-300">
+            <div className="prose prose-slate mt-4 max-w-none text-slate-700">
               {body}
             </div>
           )}
@@ -128,5 +100,5 @@ export default RevealSection
 //   fadeFrom="left"
 //   mediaSide="image-right"
 //   altBg={true}
-//   cta={<a href="#contact" className="inline-flex items-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:opacity-95 dark:bg-white dark:text-black">Get a quote</a>}
+//   cta={<a href="#contact" className="inline-flex items-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:opacity-95 ">Get a quote</a>}
 // />

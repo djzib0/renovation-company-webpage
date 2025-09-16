@@ -3,6 +3,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import ActiveLink from './ActiveLink'
+import Image from 'next/image'
 
 const NAV_LINKS = [
   { href: '/', label: 'HOME' },
@@ -26,17 +27,20 @@ const Navbar = ({ topOffset = 0 }: NavbarProps) => {
 
   return (
     <header
-      className="sticky top-0 z-50 w-full border-b border-gray-200/80 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-gray-800 dark:bg-neutral-950/60 py-6"
+      className="sticky top-0 z-50 w-full border-b border-gray-200/80 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/80"
       style={{ top: topOffset }}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Left: Brand */}
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2 font-semibold">
-            <div className="grid size-8 place-items-center rounded-xl bg-gradient-to-br from-amber-500 to-rose-500 text-white shadow-md">
-              <span className="text-xs">RC</span>
-            </div>
-            <span className="text-base tracking-tight">Renovation Co.</span>
+            <Image
+              src={"/img/logo.png"}
+              alt="Renovated interior background"
+              width={100}
+              height={100}
+              className="object-cover"
+            />
           </Link>
         </div>
 
@@ -54,7 +58,7 @@ const Navbar = ({ topOffset = 0 }: NavbarProps) => {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label="Toggle menu"
-            className="inline-flex items-center justify-center rounded-xl p-2 hover:bg-gray-100 active:scale-95 dark:hover:bg-gray-900"
+            className="inline-flex items-center justify-center rounded-xl p-2 hover:bg-gray-100 active:scale-95"
           >
             <span className="sr-only">Toggle menu</span>
             {open ? (
@@ -76,23 +80,23 @@ const Navbar = ({ topOffset = 0 }: NavbarProps) => {
       {/* Mobile dropdown (simple, no borders) */}
       {open && (
         <div id="mobile-menu" className="md:hidden">
-          <div className="mx-4 mb-3 rounded-2xl bg-white shadow-lg ring-1 ring-black/5 dark:bg-neutral-950 dark:ring-white/10">
+          <div className="mx-4 mb-3 rounded-2xl bg-white shadow-lg ring-1 ring-black/5">
             <div className="p-2">
               {NAV_LINKS.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block rounded-xl px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-900"
+                  className="block rounded-xl px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50"
                 >
                   {l.label}
                 </Link>
               ))}
-              <div className="mt-2 border-t border-gray-100 p-2 dark:border-white/10">
+              <div className="mt-2 border-t border-gray-100 p-2">
                 <Link
                   href="/quote"
                   onClick={() => setOpen(false)}
-                  className="inline-flex w-full items-center justify-center rounded-xl bg-gray-900 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 dark:bg-white dark:text-black"
+                  className="inline-flex w-full items-center justify-center rounded-xl bg-gray-900 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
                 >
                   Get a quote
                 </Link>
